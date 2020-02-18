@@ -13,3 +13,4 @@ selenium/*
 ml/SwipeRIghtOrLeft.mlproj
 version1.mlmodel
 version2.mlmodel
+.gitignore
