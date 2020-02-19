@@ -205,7 +205,7 @@ class TinderBot:
             for key, value in data.items():
                 self.driver.execute_script("localStorage.setItem('" + key + "', '" + value + "')")
 
-
-bot = TinderBot()
-time.sleep(10)
-bot.startSwiping(willSave=False)
+if __name__ == "__main__":
+    bot = TinderBot()
+    time.sleep(10)
+    bot.startSwiping(willSave=False)

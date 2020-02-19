@@ -20,5 +20,4 @@ you dont want to save
 ```
 bot.startSwiping(willSave=False)
 ```
-to
 
