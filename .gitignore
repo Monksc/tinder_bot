@@ -3,7 +3,6 @@
 cookies.json
 localStorage.json
 privateinfo.py
-ml
 __pycache__
 __pycache__/*
 data
@@ -11,6 +10,5 @@ data/*
 selenium
 selenium/*
 ml/SwipeRIghtOrLeft.mlproj
-version1.mlmodel
-version2.mlmodel
-.gitignore
+ml/version1.mlmodel
+ml/version2.mlmodel
