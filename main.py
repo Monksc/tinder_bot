@@ -26,7 +26,7 @@ from selenium import webdriver
 import time
 import json
 import random
-from privateinfo import *
+#from privateinfo import *
 import coremltools
 import PIL.Image
 import os
@@ -84,7 +84,7 @@ class TinderBot:
         login_btn = self.getElementXPath('/html/body/div[2]/div/div/div/div/div[3]/div[1]/button', count=3)
         
         if login_btn == None:
-            self.swipeStage()
+            #self.swipeStage()
             return
 
 
@@ -136,14 +136,16 @@ class TinderBot:
 
         self.swipeLeft()
 
-    def swipeStage(self):
+    def startSwiping(self, willSave=False):
 
-        print("Start Swiping")
+        self.swipeRightCount = 0
+        self.swipeLeftCount = 0
+
         while True:
-            self.swipeAndSave()
+            self.swipeAndSave(willSave)
 
 
-    def swipeAndSave(self):
+    def swipeAndSave(self, willSave):
 
         totalYes = 0
         totalNo = 0
@@ -165,14 +167,15 @@ class TinderBot:
                     noConfident += 1
 
 
-            if isSwipeRight:
-                newFilename = "data/botswipe/yes/" + str(percent) + "00000" + getRandomString() + ".png"
-                os.rename(filename, newFilename)
-                #element.screenshot(filename=filename)
-            else:
-                newFilename = "data/botswipe/no/" + str(percent) + "00000" + getRandomString() + ".png"
-                os.rename(filename, newFilename)
-                #element.screenshot(filename=filename)
+            if willSave:
+                if isSwipeRight:
+                    newFilename = "data/botswipe/yes/" + str(percent) + "00000" + getRandomString() + ".png"
+                    os.rename(filename, newFilename)
+                    #element.screenshot(filename=filename)
+                else:
+                    newFilename = "data/botswipe/no/" + str(percent) + "00000" + getRandomString() + ".png"
+                    os.rename(filename, newFilename)
+                    #element.screenshot(filename=filename)
 
         print("TOTAL YES:", totalYes, " TOTAL NO:", totalNo, " yesConfident:", yesConfident, " noConfident:", noConfident)
         if totalYes > totalNo and yesConfident > noConfident:
@@ -202,13 +205,7 @@ class TinderBot:
             for key, value in data.items():
                 self.driver.execute_script("localStorage.setItem('" + key + "', '" + value + "')")
 
-        time.sleep(5)
 
-        self.swipeRightCount = 0
-        self.swipeLeftCount = 0
-
-        self.login()
-
-
-
-
+bot = TinderBot()
+time.sleep(10)
+bot.startSwiping(willSave=False)

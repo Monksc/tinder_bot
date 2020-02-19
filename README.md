@@ -3,29 +3,22 @@ Uses machine learning to swipe right on the QTs and left on the not QTs.
 
 # Usage
 ```
-python -i main.py
-bot = TinderBot()
+python3 main.py
 ```
 Then chrome should pop up. Log into your tinder account.
 Exit the browser and rerun the program. It then should start swiping
 
+# NOTE
+If you do/dont want to save any images for further ml than change the last 
+few lines in main.py from
 
-# Issues
-If you run into issues running the first time through. The reason
-may because orignally I logged in every time instead of using cookies/local storage.
-I then didnt update my code too much so I had a few extra files like privateinfo.py.
-You also may have to remove the line 
+if you want to save
 ```
-from privateinfo.py import *
+bot.startSwiping(willSave=True)
 ```
-its like line 29.
-Then in the constructor of TinderBot, remove line 210 self.login().
-Then the usage becomes:
+you dont want to save
 ```
-python -i main.py
-bot = TinderBot()
+bot.startSwiping(willSave=False)
 ```
-Wait til you log in and then type
-```
-bot.swipeStage()
-```
+to
+
